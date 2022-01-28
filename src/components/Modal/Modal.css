@@ -1,0 +1,48 @@
+.modal-container {
+  background-color: whitesmoke;
+position: absolute;
+    left: 500px;
+    top:    50px;
+    height: 100vh;
+    width: 30%;
+    display: flex;
+align-items: center;
+transition: all 0.3s ease;
+
+}
+
+.button-cerrar {
+  width: 200px;
+  margin: 10px auto;
+}
+
+ /* .hideModal {
+    display: none;
+  }
+
+  .showModal {
+    display: block;
+  } */
+
+  .modal {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    display: block;
+    padding: 2em;
+    min-width: 20em;
+    max-width: 70%;
+    color: #f00;
+    background-color: whitesmoke;
+    border-radius: 1em;
+    transform: translate(-50%, -50%);
+    outline: transparent;
+
+  }
+
+  .addRegaloEnModal {
+    margin: 20px 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
