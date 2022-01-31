@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useContext} from "react";
 import Menu from "../Menu/Menu";
-
+import { AppContext } from "../../context/provider";
 import List from "./List";
 
 const Fetch = (props) => {
 
   const [platosBusqueda, setPlatosBusqueda] = useState([]);
   const [input, setInput] = useState("");
+
+  const [state, setState] = useContext(AppContext);
 
   useEffect(() => {
     searchProducts();

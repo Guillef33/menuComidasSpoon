@@ -80,7 +80,6 @@ function PageToDo() {
         setTodos={setTodos}
         filteredTodos={filteredTodos}
       />
-      <Fetch />
     </>
   );
 }

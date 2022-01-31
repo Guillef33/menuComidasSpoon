@@ -22,7 +22,7 @@ button:focus {
 .App-header {
   background-color: #e74c3c;
   height: 90px;
-  padding: 30px;
+  padding: 100px 30px;
   color: white;
   margin-bottom: 2rem;
 }

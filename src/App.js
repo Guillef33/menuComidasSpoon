@@ -3,7 +3,7 @@ import "./App.css";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Home from "./Home";
+import Home from "./pages/Home";
 import Login from "./components/Login/Login";
 import Menu from "./components/Menu/Menu";
 import FormikLogin from "./components/Login/FormikLogin";
