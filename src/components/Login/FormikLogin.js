@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { Redirect } from "react-router";
 import { Formik } from "formik";
 import logo from "../../assets/images/logo.jpg";
+import swal from "sweetalert";
 
 import "./Login.css";
 
@@ -22,40 +24,48 @@ import "./Login.css";
 
 const Basic = () => {
 
+    const [toNext, setToNext] = useState(false);
 
-    return (
-  <div className="Login">
-    <div className="Login-container">
-      <img src={logo} alt="logo" className="logo-login" />
 
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = `Este campo es requerido`;
-          } else if (!values.user === "guillef33@gmail.com") {
-            errors.email = `Siga`;
-            console.log("Aca");
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = "El email no es valido. Intente de nuevo. ";
-          } else if (!values.password) {
-            errors.password = "Este campo es requerido";
-          } else if (
-            !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/i.test(
-              values.password
-            )
-          ) {
-            errors.password =
-              "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character";
-          }
-          return errors;
-        }}
-        onSubmit={
-          (values) => {
-            alert(JSON.stringify(values, null, 2));
+  return (
+    <div className="Login">
+      <div className="Login-container">
+        <img src={logo} alt="logo" className="logo-login" />
+
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validate={(values) => {
+            const errors = {};
+            if (!values.email) {
+              errors.email = `Este campo es requerido`;
+            } else if (!values.user === "guillef33@gmail.com") {
+              errors.email = `Siga`;
+              console.log("Aca");
+            } else if (
+              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+            ) {
+              errors.email = "El email no es valido. Intente de nuevo. ";
+            } else if (!values.password) {
+              errors.password = "Este campo es requerido";
+            } else if (
+              !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/i.test(
+                values.password
+              )
+            ) {
+              errors.password =
+                "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character";
+            }
+            return errors;
+          }}
+          onSubmit={(values) => {
+            swal({
+              title: "Felicidades estas logeado",
+              text: JSON.stringify(values, null, 2),
+              icon: "success",
+              button: "aceptar",
+            });
+            setToNext(true);
+
             // Aca estoy agregando una funcion post submit
             //   const PostLogin = () => {
             //     fetch("http://challenge-react.alkemy.org/", {
@@ -69,68 +79,63 @@ const Basic = () => {
             //       }),
             //     })
             //       .then((res) => res.json())
-            //       // Aca puse este estado, pero no se cual iria, tome el codigo de: 
+            //       // Aca puse este estado, pero no se cual iria, tome el codigo de:
             //       .then((result) => setPostLogin(result.rows))
             //       .catch((err) => console.log("error"));
             //   };
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+            /* and other goodies */
+          }) => (
+            <form onSubmit={handleSubmit} className="form">
+              <label> Ingrese tu email </label>
+              <input
+                type="email"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                placeholder="Ingrese tu email"
+                className="input input-email"
+              />
 
-            //   setSubmitting(false);
-          }
-          //   setTimeout(() => {
-          //     alert(JSON.stringify(values, null, 2));
-          //     setSubmitting(false);
-          //   }, 400);
-          // }
-        }
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          /* and other goodies */
-        }) => (
-          <form onSubmit={handleSubmit} className="form">
-            <label> Ingrese tu email </label>
-            <input
-              type="email"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-              placeholder="Ingrese tu email"
-              className="input input-email"
-            />
-
-            {errors.email && touched.email && errors.emailq}
-            <label> Ingrese tu contrasena </label>
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-              placeholder="Ingrese tu password"
-              className="input input-password"
-            />
-            {errors.password && touched.password && errors.password}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="primary-button login-button"
-            >
-              Iniciar Sesion
-            </button>
-            <button className="secondary-button signup-button">Sign up</button>
-          </form>
-        )}
-      </Formik>
+              {errors.email && touched.email && errors.emailq}
+              <label> Ingrese tu contrasena </label>
+              <input
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                placeholder="Ingrese tu password"
+                className="input input-password"
+              />
+              {errors.password && touched.password && errors.password}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="primary-button login-button"
+              >
+                Iniciar Sesion
+              </button>
+              <button className="secondary-button signup-button">
+                Sign up
+              </button>
+              {toNext ? <Redirect to="/search" /> : null}
+            </form>
+          )}
+        </Formik>
+      </div>
     </div>
-  </div>
-)
+  );
 };
 
 export default Basic;
