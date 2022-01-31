@@ -5,9 +5,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Home from "./Home";
 import Login from "./components/Login/Login";
-import Menu from './components/Menu/Menu';
+import Menu from "./components/Menu/Menu";
 import FormikLogin from "./components/Login/FormikLogin";
-
+import ToDoList from "./components/ToDo/ToDoList";
+import PageToDo from "./components/ToDo/PageToDo";
 
 const App = () => {
   // const [token, setToken] = useState();
@@ -23,6 +24,8 @@ const App = () => {
         <Route exact path="/" component={FormikLogin} />
         <Route path="/menu" component={Menu} />
         {/* <Route path="/formiklogin" component={FormikLogin} /> */}
+
+        <Route path="/agregar" component={PageToDo} />
       </Switch>
     </Router>
   );
