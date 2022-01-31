@@ -43,12 +43,10 @@ const Fetch = (props) => {
         />
         <button>Search</button>
       </form>
-      {platosBusqueda ? (
-        <List platosBusqueda={platosBusqueda} />
-      ) : (
-        <Menu /> // 'No se han encotrado resultados 
-
-      )}
+      {platosBusqueda ? <List platosBusqueda={platosBusqueda} /> : <Menu />}
+      <div>
+        <Menu />
+      </div>
     </>
   );
 };

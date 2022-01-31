@@ -15,24 +15,23 @@ const Login = ({ setToken }) => {
       console.log(data);
     };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const token = await loginUser({
-//       username,
-//       password,
-//     });
-//     setToken(token);
-//   };
+      // function handleChange(name, value) {
+      //   if (name === "usuario") {
+      //     setUser(value);
+      //     console.log("Nombre de usuario agregado");
+      //   } else {
+      //     console.log("No es un texto de user");
+      //     if (value.length < 6) {
+      //       setPasswordError(true);
+      //       console.log("Se activa el error");
+      //     } else {
+      //       setPasswordError(false);
+      //       setPassword(value);
+      //       console.log("Buena contrasena siga sigas");
+      //     }
+      //   }
+      // }
 
-//   async function loginUser(credentials) {
-//     return fetch("http://challenge-react.alkemy.org/", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(credentials),
-//     }).then((data) => data.json());
-//   }
 
   return (
     <div className="Login">

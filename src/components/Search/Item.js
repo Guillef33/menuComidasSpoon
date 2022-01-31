@@ -42,7 +42,7 @@ const Item = ({ item  }) => {
       } else if (
         validarRepetidos(platoElegido.platosEnMenu, platoElegido.title) !== -1
       ) {
-        alert("Ese regalo esta repetido");
+        alert("Este plato esta repetido");
       } else {
         let newContainer = platoElegido.platosEnMenu;
         newContainer[newContainer.length] = {
@@ -76,7 +76,12 @@ const Item = ({ item  }) => {
         className="image-card"
         onClick={() => setShowModal(true)}
       />
-      <input type="submit" value="Agrega al menu" autoFocus />
+      <input
+        type="submit"
+        value="Ver detalle"
+        autoFocus
+        onClick={() => setShowModal(true)}
+      />
       {showModal && (
         <Modal
           onClose={() => console.log("Cierro")}
@@ -85,6 +90,7 @@ const Item = ({ item  }) => {
           setShowModal={setShowModal}
         />
       )}
+      <input type="submit" value="Borrar del Menu" autoFocus />
     </div>
   );
 };
