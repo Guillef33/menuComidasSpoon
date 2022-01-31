@@ -15,7 +15,7 @@ const Fetch = (props) => {
   const searchProducts = async (e) => {
     e.preventDefault();
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=74140d60223e4548bd87a7085dfc4506&number=10&query=${input}&intolerances="gluten"` // buscamos con intolerancia al gluten
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=74140d60223e4548bd87a7085dfc4506&number=10&query=${input}&intolerances="gluten&number=4"` // buscamos con intolerancia al gluten
     );
     const data = await response.json();
     console.log(data.results);
@@ -40,8 +40,10 @@ const Fetch = (props) => {
           type="text"
           name="recipeName"
           onChange={(el) => handleOnChange(el)}
+          className="recipe__input__search"
+          placeholder="Puedes buscar ingredientes o platos en ingles. Ej: seed o pie."
         />
-        <button>Search</button>
+        <button className="recipe_buttons__bold">Buscar</button>
       </form>
       {platosBusqueda ? <List platosBusqueda={platosBusqueda} /> : <Menu />}
       <div>

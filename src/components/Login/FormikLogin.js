@@ -1,31 +1,17 @@
 import React, { useState } from "react";
+
 import { Redirect } from "react-router";
+import axios from "axios";
+
 import { Formik } from "formik";
+
 import logo from "../../assets/images/logo.jpg";
 import swal from "sweetalert";
 
 import "./Login.css";
 
-//    function ifMatch(param) {
-// if (param.user.length > 0 && param.password.length > 0) {
-//   if (param.user === "Guillermo" && param.password === "123456") {
-//     const { user, password } = param;
-//     let ac = { user, password };
-//     let account = JSON.stringify(ac);
-//     localStorage.setItem("account", account);
-//     setIsLogin(true);
-//   } else {
-//     setIsLogin(false);
-//     sethasError(true);
-//   }
-// } else {
-//   setIsLogin(false);
-//   sethasError(true);
-
 const Basic = () => {
-
-    const [toNext, setToNext] = useState(false);
-
+  const [toNext, setToNext] = useState(false);
 
   return (
     <div className="Login">
@@ -47,23 +33,33 @@ const Basic = () => {
               errors.email = "El email no es valido. Intente de nuevo. ";
             } else if (!values.password) {
               errors.password = "Este campo es requerido";
-            } else if (
-              !/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/i.test(
-                values.password
-              )
-            ) {
+            } else if (!/^[a-zA-Z0-9-]{4,}\b$/i.test(values.password)) {
               errors.password =
                 "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character";
             }
             return errors;
           }}
           onSubmit={(values) => {
+            console.log('email', values.email)
+            console.log("password", values.password);
+
+            axios.post(
+              `http://challenge-react.alkemy.org/`,
+              {},
+              {
+                auth: {
+                  username: values.email,
+                  password: values.password,
+                },
+              }
+            );
             swal({
               title: "Felicidades estas logeado",
               text: JSON.stringify(values, null, 2),
               icon: "success",
               button: "aceptar",
             });
+
             setToNext(true);
 
             // Aca estoy agregando una funcion post submit

@@ -11,7 +11,7 @@ const Menu = () => {
 
   const menuList = async () => {
     const response = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=74140d60223e4548bd87a7085dfc4506`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=74140d60223e4548bd87a7085dfc4506&diet=vegetarian&includeIngredients=tomato&number=4&`
     );
     console.log(response);
     const data = await response.json();
@@ -24,7 +24,7 @@ const Menu = () => {
   return (
     <div className="recipes-container">
       {menu.map((item) => (
-        <Item item={item} />
+        <Item item={item} key={item.id}/>
       ))}
     </div>
   );

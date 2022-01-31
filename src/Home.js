@@ -21,7 +21,7 @@ class Home extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Recipe Search</h1>
+          <h1 className="App-title">Bienvenido al restaurante. Ahora podes hacer tu menu.</h1>
         </header>
         <Fetch />
 

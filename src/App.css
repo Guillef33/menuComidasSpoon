@@ -20,7 +20,7 @@ button:focus {
 }
 
 .App-header {
-  background-color: #2c3e50;
+  background-color: #e74c3c;
   height: 90px;
   padding: 30px;
   color: white;
@@ -43,12 +43,38 @@ button:focus {
   margin-left: 0.7rem;
 }
 
+.recipe_buttons__bold {
+    border: solid 2px #e74c3c;
+  background: #e74c3c;
+  padding: 0.4rem 0.6rem;
+  margin: 0 0.2rem;
+  border-radius: 1px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-left: 0.7rem;
+  color: white;
+}
+
+.recipe__input__search {
+      border: solid 2px #e74c3c;
+  background:transparent;
+  padding: 0.4rem 0.6rem;
+  margin: 0 0.2rem;
+  border-radius: 1px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-left: 0.7rem;  
+  width: 600px;
+}
+
 .recipes__box {
   background: #fff;
   padding-bottom: 2rem;
   border-radius: 5px;
   box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
-  text-align: left;
+  text-align: center;
   overflow: hidden;
 }
 
