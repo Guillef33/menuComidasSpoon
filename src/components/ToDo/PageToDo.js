@@ -66,7 +66,7 @@ function PageToDo() {
   return (
     <>
       <header>
-        <h1>Ed's Todo List</h1>
+        <h1>Agregar items a esta lista</h1>
       </header>
       <FormToDoList
         todos={todos}
