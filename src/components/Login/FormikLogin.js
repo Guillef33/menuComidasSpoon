@@ -24,23 +24,24 @@ const Basic = () => {
             const errors = {};
             if (!values.email) {
               errors.email = `Este campo es requerido`;
-            } else if (!values.user === "guillef33@gmail.com") {
-              errors.email = `Siga`;
-              console.log("Aca");
-            } else if (
+            }
+            // else if (!values.user === "guillef33@gmail.com") {
+            //   errors.email = `Siga`;
+            //   console.log("Aca");
+            // }
+            else if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
               errors.email = "El email no es valido. Intente de nuevo. ";
             } else if (!values.password) {
               errors.password = "Este campo es requerido";
             } else if (!/^[a-zA-Z0-9-]{4,}\b$/i.test(values.password)) {
-              errors.password =
-                "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character";
+              errors.password = `Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character`;
             }
             return errors;
           }}
           onSubmit={(values) => {
-            console.log('email', values.email)
+            console.log("email", values.email);
             console.log("password", values.password);
 
             axios.post(
@@ -103,7 +104,9 @@ const Basic = () => {
                 className="input input-email"
               />
 
-              {errors.email && touched.email && errors.emailq}
+              {errors.email && touched.email && (
+                <p className="errors-formik">errors.email</p>
+              )}
               <label> Ingrese tu contrasena </label>
               <input
                 type="password"
@@ -114,7 +117,9 @@ const Basic = () => {
                 placeholder="Ingrese tu password"
                 className="input input-password"
               />
-              {errors.password && touched.password && errors.password}
+              {errors.password && touched.password && (
+                <p className="errors-formik">{errors.password}</p>
+              )}
               <button
                 type="submit"
                 disabled={isSubmitting}

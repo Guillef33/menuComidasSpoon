@@ -6,6 +6,7 @@
   display: grid;
   place-items: center;
   background-color: white;
+
 }
 .Login-container {
   display: grid;
@@ -42,6 +43,7 @@
   font-size: var(--md);
   padding: 6px;
   margin-bottom: 12px;
+    width: 100%;
 }
 .input-email {
   margin-bottom: 22px;
@@ -71,6 +73,11 @@
 .login-button {
   margin-top: 14px;
   margin-bottom: 30px;
+}
+
+.errors-formik {
+  color: red;
+  font-size: 12px;
 }
 
 .logo-login {
