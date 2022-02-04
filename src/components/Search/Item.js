@@ -1,12 +1,16 @@
-import React, { useState }from "react";
+import React, { useState, useContext }from "react";
 
 import "./list.css";
 import Modal from '../Modal/Modal'
 
-const Item = ({ item  }) => {
-  
-  const [showModal, setShowModal] = useState(false);
-  const [onClose, setOnClose] = useState(false);
+import { AppContext } from "../../context/AppContext";
+
+
+const Item = ( { item }) => {
+
+   const { showModal, setShowModal, onClose, setOnClose } =
+     useContext(AppContext);
+
 
   //   let localMenu;
   //   if (localStorage.getItem("Nuevo Plato en el Menu")) {

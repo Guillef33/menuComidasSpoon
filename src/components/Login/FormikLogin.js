@@ -24,62 +24,44 @@ const Basic = () => {
             const errors = {};
             if (!values.email) {
               errors.email = `Este campo es requerido`;
-            }
-            // else if (!values.user === "guillef33@gmail.com") {
-            //   errors.email = `Siga`;
-            //   console.log("Aca");
-            // }
-            else if (
+            } else if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
               errors.email = "El email no es valido. Intente de nuevo. ";
             } else if (!values.password) {
               errors.password = "Este campo es requerido";
             } else if (!/^[a-zA-Z0-9-]{4,}\b$/i.test(values.password)) {
-              errors.password = `Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character`;
+              errors.password = `Must Contain 4 Characters`;
             }
             return errors;
           }}
           onSubmit={(values) => {
             console.log("email", values.email);
             console.log("password", values.password);
-
-            axios.post(
-              `http://challenge-react.alkemy.org/`,
-              {},
-              {
-                auth: {
-                  username: values.email,
-                  password: values.password,
-                },
-              }
-            );
-            swal({
-              title: "Felicidades estas logeado",
-              text: JSON.stringify(values, null, 2),
-              icon: "success",
-              button: "aceptar",
-            });
-
-            setToNext(true);
-
-            // Aca estoy agregando una funcion post submit
-            //   const PostLogin = () => {
-            //     fetch("http://challenge-react.alkemy.org/", {
-            //       method: "POST",
-            //       headers: {
-            //         "Content-Type": "application/json",
-            //       },
-            //       body: JSON.stringify({
-            //         email: values.email,
-            //         password: values.password,
-            //       }),
-            //     })
-            //       .then((res) => res.json())
-            //       // Aca puse este estado, pero no se cual iria, tome el codigo de:
-            //       .then((result) => setPostLogin(result.rows))
-            //       .catch((err) => console.log("error"));
-            //   };
+            axios
+              .post(`http://challenge-react.alkemy.org/`, {
+                email: values.email,
+                password: values.password,
+              })
+              .then((response) => {
+                swal({
+                  title: "Felicidades estas logeado",
+                  text: JSON.stringify(values, null, 2),
+                  icon: "success",
+                  button: "aceptar",
+                });
+              })
+              .then(() => {
+                setToNext(true);
+              })
+              .catch((error) => {
+                swal({
+                  title: "Error",
+                  text: "Usuario o contrasena incorrecto",
+                  icon: "error",
+                  button: "aceptar",
+                });
+              });
           }}
         >
           {({

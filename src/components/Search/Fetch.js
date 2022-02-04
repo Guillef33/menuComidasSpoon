@@ -1,35 +1,11 @@
-import React, { useState, useEffect, useRef, useContext} from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Menu from "../Menu/Menu";
-import { AppContext } from "../../context/provider";
+import { AppContext } from "../../context/AppContext";
 import List from "./List";
 
-const Fetch = (props) => {
+const Fetch = ( ) => {
 
-  const [platosBusqueda, setPlatosBusqueda] = useState([]);
-  const [input, setInput] = useState("");
-
-  const [state, setState] = useContext(AppContext);
-
-  useEffect(() => {
-    searchProducts();
-  }, []);
-
-  const searchProducts = async (e) => {
-    e.preventDefault();
-    const response = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=74140d60223e4548bd87a7085dfc4506&number=10&query=${input}&intolerances="gluten&number=4"` // buscamos con intolerancia al gluten
-    );
-    const data = await response.json();
-    console.log(data.results);
-    setPlatosBusqueda(data.results);
-    console.log(platosBusqueda);
-  };
-
-  const handleOnChange = (el) => {
-    console.log(el.target.value);
-    let query = el.target.value;
-    setInput(query);
-  };
+  const {platosBusqueda, searchProducts, handleOnChange} = useContext(AppContext)
 
   return (
     <>
