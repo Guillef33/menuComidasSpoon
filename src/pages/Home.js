@@ -9,16 +9,14 @@ import PageToDo from "../components/ToDo/PageToDo";
 
 const Home = () => {
   return (
-    // <MyProvider>
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Bienvenido al restaurante.</h1>
-          <p>Ahora podes hacer tu menu.</p>
-        </header>
-        <Fetch />
-        {/* <PageToDo /> */}
-      </div>
-    // </MyProvider>
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Bienvenido al restaurante.</h1>
+        <p>Ahora podes hacer tu menu.</p>
+      </header>
+      <Fetch />
+      {/* <PageToDo /> */}
+    </div>
   );
 };
 

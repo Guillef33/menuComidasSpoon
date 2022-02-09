@@ -5,6 +5,9 @@ import Item from "../Search/Item";
 const Menu = () => {
   const [menu, setMenu] = useState([]);
 
+  // Pasar esto a Context
+  // Validaciones a la llamada
+
   useEffect(() => {
     menuList();
   }, []);

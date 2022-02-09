@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/agregar" component={PageToDo} />
         </Switch>
       </Router>
-    // </AppProvider>
+    </AppProvider>
   );
 };
 

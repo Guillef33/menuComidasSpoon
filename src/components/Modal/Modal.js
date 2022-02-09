@@ -10,20 +10,27 @@ function Modal({ item, showModal, setShowModal, onClose }) {
 
   return (
     <div className="modal-container">
-      <div className="addRegaloEnModal">
-        <h2>{item.title}</h2>
-        <img
-          src={item.image}
-          alt={item.id}
-          key={item.id}
-          className="image-card"
-          onClick={() => setShowModal(true)}
-        />
+      
+      <div className="detail-card">
+        <div className="addRegaloEnModal">
+          <h2>{item.title}</h2>
+          <img
+            src={item.image}
+            alt={item.id}
+            key={item.id}
+            className="image-card"
+            onClick={() => setShowModal(true)}
+          />
 
-        <button className="button-cerrar" onClick={() => setShowModal(false)}>
-          Cerrar este modal
-        </button>
+          <button className="button-cerrar" onClick={() => setShowModal(false)}>
+            Cerrar este modal x
+          </button>
+                    <button className="button-cerrar" onClick={() => setShowModal(false)}>
+            Agregar
+          </button>
+        </div>
       </div>
+      
     </div>
   );
 }

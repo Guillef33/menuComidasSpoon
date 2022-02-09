@@ -23,10 +23,7 @@ const Fetch = ( ) => {
         />
         <button className="recipe_buttons__bold">Buscar</button>
       </form>
-      {platosBusqueda ? <List platosBusqueda={platosBusqueda} /> : <Menu />}
-      <div>
-        <Menu />
-      </div>
+      {platosBusqueda.length ? <List platosBusqueda={platosBusqueda} /> : <Menu />} 
     </>
   );
 };
